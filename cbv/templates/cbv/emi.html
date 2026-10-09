@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>EMI Calculator</h2>
+
+    <hr>
+    <h4>Product Name: {{ product.prod_name }}</h4>
+    <p>Product Price: ₹{{ product.price }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Down Payment</label>
+        <input type="number" name="down_payment" class="form-control mb-3" required>
+        <label>Tenure</label>
+        <select name="tenure" class="form-control mb-3">
+
+            <option value="1">1 Year - 12% </option>
+            <option value="2">2 Year - 12% </option>
+            <option value="3">3 Years - 12% </option>
+            <option value="5">5 Years - 12%</option>
+            <option value="7">7 Years - 10%</option>
+            <option value="10">10 Years - 10%</option>
+
+        </select>
+        <button type="submit" class="btn btn-dark">Calculate</button>
+
+    </form>
+
+    {% if emi %}
+    <div class="row mt-4">
+        <div class=" col-md-6">
+            <h4>EMI Result</h4>
+            <p>Car Price: ₹{{ car_price }}</p>
+            <p>Down Payment: ₹{{ down_payment }}</p>
+            <p>Loan Amount: ₹{{ loan_amount }}</p>
+            <p>Tenure: {{ tenure }} Years</p>
+            <p>Interest Rate: {{ interest_rate }}%</p>
+            <p>Total Interest: ₹{{ total_interest }}</p>
+            <p>Total Payment: ₹{{ total_payment }}</p>
+            <h3>Monthly EMI: ₹{{ emi }}</h3>
+        </div>
+        <div class="col-md-6 text-center">
+            <!-- <h4>car image</h4> -->
+            {% if product.prod_image %}
+                <img src="{{ product.prod_image.url }}" class="img-fluid" style="max-height:350px; object-fit:contain;">
+            {% endif %}
+            <h5>{{ product.prod_name }}</h5>
+            <!-- <p>Price ₹{{ product.price }}</p> -->
+            <form method="POST" action="{% url 'apply_loan' product.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="down_payment" value="{{ down_payment }}">
+                <input type="hidden" name="loan_amount" value="{{ loan_amount }}">
+                <input type="hidden" name="tenure" value="{{ tenure }}">
+                <input type="hidden" name="interest_rate" value="{{ interest_rate }}">
+                <input type="hidden" name="emi" value="{{ emi }}">
+                <input type="hidden" name="total_payment" value="{{ total_payment }}">
+                <input type="hidden" name="total_interest" value="{{ total_interest }}">
+                <button type="submit" class="btn btn-primary">Apply for Loan</button>
+            </form>
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

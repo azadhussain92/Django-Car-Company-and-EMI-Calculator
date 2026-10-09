@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- <div class="container mt-5 text-center">
+    <h2 class="text-success">✅ Loan Application Submitted!</h2>
+    <p>your loan application <strong>{{ application.product.prod_name }}</strong> successfully submit .</p>
+    <h3>Car Price: ₹{{ application.product.price }}</h3>
+    <p>Down_Payment: ₹{{application.down_payment}}</p>
+    <p>Loan_Amount: ₹{{application.loan_amount}}</p>
+    <p>Interest_Rate: ₹{{application.interest_rate}}%</p>
+    <p>Total_Interest: ₹{{application.total_interest}}</p>
+    <p>Total_Amount: ₹{{application.total_payment}}</p>
+    <p>Monthly EMI: ₹{{ application.emi }} &nbsp;|&nbsp; Tenure: {{ application.tenure }} Years</p>
+    <a href="{% url 'companies' %}" class="btn btn-dark mt-3">Back to Companies</a>
+</div> -->
+<div class="container mt-5">
+
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>✅ Loan Application Submitted!</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="text-center">
+                Your Loan Application for <strong>{{ application.product.prod_name }} </strong> Successfully Submitted.
+            </h4>
+
+            <hr>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Car Price</th>
+                    <td>₹{{ application.product.price }}</td>
+                </tr>
+                <tr>
+                    <th>Down Payment</th>
+                    <td>₹{{ application.down_payment }}</td>
+                </tr>
+                <tr>
+                    <th>Loan Amount</th>
+                    <td>₹{{ application.loan_amount }}</td>
+                </tr>
+                <tr>
+                    <th>Interest Rate</th>
+                    <td>{{ application.interest_rate }}%</td>
+                </tr>
+                <tr>
+                    <th>Total Interest</th>
+                    <td>₹{{ application.total_interest }}</td>
+                </tr>
+                <tr>
+                    <th>Total Amount</th>
+                    <td>₹{{ application.total_payment }}</td>
+                </tr>
+                <tr>
+                    <th>Monthly EMI</th>
+                    <td>₹{{ application.emi }}</td>
+                </tr>
+                <tr>
+                    <th>Tenure</th>
+                    <td>{{ application.tenure }} Years</td>
+                </tr>
+            </table>
+                <a href="{% url 'companies' %}" class="btn btn-dark mt-3">Back to Companies</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

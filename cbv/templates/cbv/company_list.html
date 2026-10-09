@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- company_detail -->
+<div class="container mt-5">
+
+    <!-- <h1 class="text-center mb-5"> List of All Companies</h1> -->
+    <div class="row">
+
+        {% for company in object_list %}
+
+        <div class="col-md-3 mb-4">
+            <div class="card">
+
+                {% if company.comp_logo %}
+                    <img src="{{ company.comp_logo.url }}" class="card-img-top" height="220"alt="{{ company.name }}">
+                {% endif %}
+
+                <div class="card-body text-center">
+                    <h3><a href="{% url 'company_detail' company.id %}">{{ company.name }}</a></h3>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

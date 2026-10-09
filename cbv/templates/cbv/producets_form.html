@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- <a href="{% url 'create' %}" class="btn btn-primary mb-5">Back</a> -->
+<div class="container mt-5">
+    <h1>Add Product</h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary">
+            Add Product
+        </button>
+    </form>
+
+</div>
+
+{% endblock %}

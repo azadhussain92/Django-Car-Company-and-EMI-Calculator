@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <a href="{% url 'companies' %}"class="btn btn-secondary mb-4"> Back</a>
+
+    <!-- Company Details -->
+    <div class="card mb-5">
+
+        <div class="row g-0">
+            <div class="col-md-4 text-center">
+
+                {% if company_detail.comp_logo %}
+
+                    <img src="{{ company_detail.comp_logo.url }}"class="img-fluid"height="250" alt="{{ company_detail.name }}">
+
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+
+                    <h1>{{ company_detail.name }}</h1>
+                    <p><strong>CEO:</strong>{{ company_detail.ceo }}</p>
+
+                    <p><strong>Established Year:</strong>{{ company_detail.est_yer }}</p>
+
+                    <p><strong>Origin:</strong>{{ company_detail.origien }}</p>
+                    
+                    <a href="{% url 'edit' pk=company_detail.id %}" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-secondary">Delate</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+
+    <!-- <a href="{% url 'add_product'%}" class="btn btn-primary mb-4"> add product</a> -->
+
+    <!-- Products -->
+
+    <h2 class="mb-4">Products Details</h2>
+    <div class="row">
+
+        {% for product in company_detail.companies.all %}
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+
+                {% if product.prod_image %}
+
+                    <img src="{{ product.prod_image.url }}" class="card-img-top" height="220"alt="{{ product.prod_name }}">
+
+                {% endif %}
+
+                <div class="card-body">
+                    <h4>{{ product.prod_name }}</h4>
+
+                    <p><strong>Price:</strong>₹{{ product.price }}</p>
+                    <p><strong>Color:</strong>{{ product.color }}</p>
+                    <p><strong>Engine:</strong>{{ product.engien_cc }}</p>
+                    <p><strong>Fuel:</strong>{{ product.fuel_Type }}</p>
+                    <p><strong>Mileage:</strong>{{ product.miliege }}</p>
+                    <p><strong>Seats:</strong>{{ product.settings }}</p>
+                    <p><strong>Company:</strong>{{ product.company }}</p>
+                    <!-- add one logo in this icon for bank -->
+                     <div class="text-end">
+                        <a href="{% url 'emi' pk=product.id %}">
+                            <i class="bi bi-bank"></i>
+                        </a>
+                        <div>
+                            <small>Easy EMI & Loan Options</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+
+        {% empty %}
+
+        <div class="alert alert-warning">
+            No Products Found.
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

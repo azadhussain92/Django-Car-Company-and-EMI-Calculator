@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <a href="{% url 'companies' %}" class="btn btn-secondary mb-5">Back</a> -->
+<div class="container">
+    <div class="jumbotron">
+
+        <h1>Add New company</h1>
+    {% if form.instance.pk%}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="ADD">
+            <br>
+        </form>
+
+    {%else%}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="ADD">
+            <br>
+        </form>
+
+    {% endif %}
+    <!-- <a href="{% url 'add_product' %}" class="btn btn-secondary">add Product</a> -->
+        
+    </div>
+</div>
+
+{% endblock %}
