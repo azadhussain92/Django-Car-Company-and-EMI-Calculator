@@ -20,6 +20,44 @@ This project is a web application developed using Python and Django. It allows u
 - HTML and CSS
 - Bootstrap
 - SQL database
+- 
+## Car Company Management and EMI Calculator Workflow
+
+```text
+       CAR COMPANY MANAGEMENT SYSTEM
+                    |
+          +---------+---------+
+          |                   |
+          v                   v
+     ADMIN LOGIN          USER VISIT
+          |                   |
+          v                   v
+    ADMIN DASHBOARD      HOME PAGE
+          |                   |
+          v                   v
+    MANAGE COMPANIES    SEARCH COMPANIES
+          |                   |
+          v                   v
+       ADD CARS            VIEW CARS
+          |                   |
+          v                   v
+    UPDATE / DELETE      SELECT CAR
+                              |
+                              v
+                       EMI CALCULATOR
+                              |
+                              v
+                      ENTER LOAN DETAILS
+                              |
+                              v
+                      CALCULATE MONTHLY EMI
+                              |
+                              v
+                       DISPLAY EMI RESULT
+                              |
+                              v
+                       APPLY FOR LOAN
+```
 
 ## EMI Calculator
 The EMI calculator estimates the monthly installment based on the loan amount, annual interest rate, and repayment period.
